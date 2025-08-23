@@ -18,9 +18,9 @@ export default function LandingPage() {
     trackDemoClick()
   }
 
-  const handleReferralClick = () => {
-    trackReferralClick()
-  }
+  // const handleReferralClick = () => {
+  //   trackReferralClick()
+  // }
 
   useEffect(() => {
     setIsVisible(true)
@@ -144,7 +144,7 @@ export default function LandingPage() {
                   </div>
                   <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Ahorrás tiempo real</h3>
                   <p className="text-gray-400 text-xs md:text-sm">
-                    No más mensajes de "¿tenés lugar el martes?". Tus clientes ven disponibilidad y eligen solos.
+                    No más mensajes de &quot;¿tenés lugar el martes?&quot;. Tus clientes ven disponibilidad y eligen solos.
                   </p>
                 </div>
 
