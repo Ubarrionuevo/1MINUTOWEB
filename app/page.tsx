@@ -48,7 +48,7 @@ export default function LandingPage() {
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
           >
             <MessageCircle size={16} />
-            <span className="hidden sm:inline">Lo quiero</span>
+            <span className="hidden sm:inline">{"Empeza gratis"}</span>
             <span className="sm:hidden">Lo quiero</span>
           </button>
         </div>
@@ -270,7 +270,7 @@ export default function LandingPage() {
                       <MessageCircle size={18} />
                       <span className="text-sm sm:text-base md:text-lg">Empezar a ahorrar tiempo</span>
                       <div className="bg-white/20 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-bold">
-                        AHORA
+                        GRATIS
                       </div>
                     </button>
                   </div>
@@ -343,7 +343,7 @@ export default function LandingPage() {
                   onClick={() => handleWhatsAppClick("final_cta")}
                   className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                 >
-                  Quiero 1minuto
+                  Empeza gratis 
                   <MessageCircle size={18} />
                 </button>
               </div>
