@@ -45,11 +45,14 @@ export default function LandingPage() {
           </div>
           <button
             onClick={() => handleWhatsAppClick("header")}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105 relative group"
           >
             <MessageCircle size={16} />
-            <span className="hidden sm:inline">¡GRATIS!</span>
+            <span className="hidden sm:inline">¡EMPEZAR GRATIS!</span>
             <span className="sm:hidden">¡GRATIS!</span>
+            <div className="absolute -top-1 -right-1 bg-green-500 text-white text-xs font-black px-1.5 py-0.5 rounded-full animate-pulse">
+              GRATIS
+            </div>
           </button>
         </div>
       </header>
@@ -266,12 +269,15 @@ export default function LandingPage() {
                     </ul>
                     <button
                       onClick={() => handleWhatsAppClick("pricing")}
-                      className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 flex items-center justify-center gap-1 sm:gap-2 md:gap-3"
+                      className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 flex items-center justify-center gap-1 sm:gap-2 md:gap-3 relative group"
                     >
                       <MessageCircle size={18} />
-                      <span className="text-sm sm:text-base md:text-lg">¡Empezar GRATIS!</span>
-                      <div className="bg-white/20 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-bold">
+                      <span className="text-sm sm:text-base md:text-lg">¡EMPEZAR AHORA GRATIS!</span>
+                      <div className="bg-green-500 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-bold animate-pulse">
                         GRATIS
+                      </div>
+                      <div className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-black px-1.5 py-0.5 rounded-full animate-bounce">
+                        🔥
                       </div>
                     </button>
                   </div>
@@ -342,10 +348,16 @@ export default function LandingPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 px-4">
                 <button
                   onClick={() => handleWhatsAppClick("final_cta")}
-                  className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 relative group"
                 >
-                  ¡Quiero 1minuto GRATIS!
                   <MessageCircle size={18} />
+                  <span>¡QUIERO 1MINUTO GRATIS AHORA!</span>
+                  <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse">
+                    GRATIS
+                  </div>
+                  <div className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-black px-1.5 py-0.5 rounded-full animate-bounce">
+                    ⚡
+                  </div>
                 </button>
               </div>
             </div>
@@ -379,7 +391,19 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      <div className="fixed bottom-6 right-6 z-40"></div>
+      {/* CTA Flotante de Acción Rápida */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button
+          onClick={() => handleWhatsAppClick("floating_cta")}
+          className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-3 rounded-full font-bold text-sm shadow-2xl shadow-red-500/50 transition-all duration-300 hover:scale-110 flex items-center gap-2 animate-pulse"
+        >
+          <MessageCircle size={16} />
+          <span>¡GRATIS!</span>
+          <div className="bg-green-500 text-white text-xs font-black px-1.5 py-0.5 rounded-full animate-bounce">
+            AHORA
+          </div>
+        </button>
+      </div>
     </div>
   )
 }
