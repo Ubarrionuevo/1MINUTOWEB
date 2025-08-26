@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { MessageCircle, Clock, Smartphone, Moon, Settings, Users, Heart, CheckCircle } from "lucide-react"
-import { trackWhatsAppClick, trackDemoClick, trackEvent } from "@/lib/analytics"
+import { trackWhatsAppClick, trackDemoClick, trackReferralClick, trackEvent } from "@/lib/analytics"
 
 export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -18,7 +18,9 @@ export default function LandingPage() {
     trackDemoClick()
   }
 
-
+  const handleReferralClick = () => {
+    trackReferralClick()
+  }
 
   useEffect(() => {
     setIsVisible(true)
@@ -46,8 +48,8 @@ export default function LandingPage() {
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
           >
             <MessageCircle size={16} />
-            <span className="hidden sm:inline">GRATIS</span>
-            <span className="sm:hidden">GRATIS</span>
+            <span className="hidden sm:inline">{"Probalo"}</span>
+            <span className="sm:hidden">Lo quiero</span>
           </button>
         </div>
       </header>
@@ -266,7 +268,7 @@ export default function LandingPage() {
                       className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 flex items-center justify-center gap-1 sm:gap-2 md:gap-3"
                     >
                       <MessageCircle size={18} />
-                      <span className="text-sm sm:text-base md:text-lg">GRATIS</span>
+                      <span className="text-sm sm:text-base md:text-lg">Empezar a ahorrar tiempo</span>
                       <div className="bg-white/20 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-bold">
                         GRATIS
                       </div>
@@ -315,7 +317,7 @@ export default function LandingPage() {
                       onClick={() => handleWhatsAppClick("referral")}
                       className="bg-green-500 hover:bg-green-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25 flex items-center justify-center gap-2 w-full sm:w-auto justify-center"
                     >
-                      GRATIS
+                      Quiero referir amigos
                       <MessageCircle size={18} />
                     </button>
                     <p className="text-gray-400 text-sm">Sin límite de referidos</p>
@@ -341,7 +343,7 @@ export default function LandingPage() {
                   onClick={() => handleWhatsAppClick("final_cta")}
                   className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                 >
-                  GRATIS
+                  Empeza gratis 
                   <MessageCircle size={18} />
                 </button>
               </div>
