@@ -341,7 +341,7 @@ export default function LandingPage() {
                   onClick={() => handleWhatsAppClick("final_cta")}
                   className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                 >
-                  Probab 
+                  Probalo 
                   <MessageCircle size={18} />
                 </button>
               </div>
