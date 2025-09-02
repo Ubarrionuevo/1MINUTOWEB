@@ -154,3 +154,28 @@
   transition-property: transform, opacity, background-color, border-color, color, box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Navbar desktop CTA subtle pulse */
+@keyframes navCtaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.35); transform: translateZ(0); }
+  50% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.12); }
+}
+
+.nav-cta-pulse {
+  animation: navCtaPulse 2.4s ease-in-out infinite;
+}
+
+@media (max-width: 639px) {
+  /* disable animation on mobile */
+  .nav-cta-pulse { animation: none; }
+}
+
+/* Mobile navbar CTA breathe */
+@keyframes navCtaBreathe {
+  0%, 100% { transform: translateZ(0) scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.0); }
+  50% { transform: translateZ(0) scale(1.04); box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12); }
+}
+
+.nav-cta-mobile {
+  animation: navCtaBreathe 2.2s ease-in-out infinite;
+}

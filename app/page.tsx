@@ -59,7 +59,7 @@ export default function LandingPage() {
             <div className="flex items-center" />
 
             {/* Mobile: Botón Catálogo digital centrado en el header */}
-            <div className="absolute left-1/2 -translate-x-1/2">
+            <div className="absolute left-1/2 -translate-x-1/2 nav-cta-mobile">
               <a
                 href={catalogUrl}
                 target="_blank"
@@ -92,7 +92,7 @@ export default function LandingPage() {
           </div>
 
           {/* Desktop: Catálogo Digital centered button */}
-          <div className="absolute left-1/2 -translate-x-1/2">
+          <div className="absolute left-1/2 -translate-x-1/2 nav-cta-pulse">
             <a
               href={catalogUrl}
               target="_blank"
