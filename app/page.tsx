@@ -22,6 +22,14 @@ export default function LandingPage() {
     trackReferralClick()
   }
 
+  const catalogUrl = "https://catalogo1minuto.vercel.app/"
+  const handleCatalogClick = () => {
+    trackEvent("catalog_nav_click", {
+      event_category: "navigation",
+      event_label: "catalog_header",
+    })
+  }
+
   useEffect(() => {
     setIsVisible(true)
     // Track page load
@@ -36,7 +44,7 @@ export default function LandingPage() {
       {/* Fixed Header - Mobile First */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
         {/* Mobile Layout - Stacked */}
-        <div className="w-full px-4 py-3 space-y-3 sm:hidden">
+        <div className="w-full px-4 py-2 sm:hidden relative">
           {/* Logo and CTAs */}
           <div className="flex justify-between items-center">
             <div className="flex items-center">
@@ -47,24 +55,26 @@ export default function LandingPage() {
               />
             </div>
             
-            {/* Mobile CTAs */}
-            <div className="flex items-center space-x-2">
-              {/* WhatsApp CTA */}
-              <button
-                onClick={() => handleWhatsAppClick("header")}
-                className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-full text-xs font-medium transition-all duration-300 flex items-center gap-1 hover:scale-105"
+            {/* Mobile CTAs (removido para ajustar alto del header) */}
+            <div className="flex items-center" />
+
+            {/* Mobile: Botón Catálogo digital centrado en el header */}
+            <div className="absolute left-1/2 -translate-x-1/2">
+              <a
+                href={catalogUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleCatalogClick}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors"
               >
-                <MessageCircle size={14} />
-                <span>Lo quiero</span>
-              </button>
-              
-             
+                <span>Tenemos catalogo digital</span>
+              </a>
             </div>
           </div>
         </div>
 
         {/* Desktop Layout - Horizontal */}
-        <div className="hidden sm:flex w-full px-4 sm:px-6 py-3 justify-between items-center">
+        <div className="hidden sm:flex w-full px-4 sm:px-6 py-3 justify-between items-center relative">
           {/* Logo and Navigation */}
           <div className="flex items-center space-x-6 sm:space-x-8">
             <div className="flex items-center">
@@ -79,6 +89,19 @@ export default function LandingPage() {
             <nav className="flex items-center space-x-6 lg:space-x-8">
            
             </nav>
+          </div>
+
+          {/* Desktop: Catálogo Digital centered button */}
+          <div className="absolute left-1/2 -translate-x-1/2">
+            <a
+              href={catalogUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleCatalogClick}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-gray-700 text-gray-200 hover:text-white hover:border-red-500/60 hover:bg-red-500/10 transition-colors"
+            >
+              También tenemos <span className="font-semibold text-white">Catálogo digital</span>
+            </a>
           </div>
 
           {/* Desktop CTA Buttons */}
