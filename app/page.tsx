@@ -57,47 +57,66 @@ export default function LandingPage() {
       {/* Hero Section */}
       <main className="pt-16 pb-8">
         <div className="container mx-auto px-4">
-          <section className="text-center py-8 md:py-16">
+          <section className="py-8 md:py-16">
             <div
               className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             >
-              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                <span className="text-white">Dejá de vivir</span>
-                <span className="block text-red-500">pegado al celular</span>
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8 px-2">
-                Tus clientes toman turnos solos. Vos recuperás tu tiempo libre.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center items-center px-4">
-                <div className="relative group">
-                  {/* Animated background glow */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-white to-red-500 rounded-full blur opacity-75 group-hover:opacity-100 animate-pulse"></div>
-
-                  <a
-                    href="https://turnopeluqueria-1minuto.lovable.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={handleDemoClick}
-                    className="relative bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-base sm:text-lg font-bold transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 flex items-center gap-2 w-full sm:w-auto justify-center border-2 border-white shadow-lg shadow-white/30"
-                  >
-                    <span className="text-lg animate-pulse">🔥</span>
-                    <span className="font-black">PROBA LA DEMO</span>
-                    <span className="text-lg animate-bounce">👆</span>
-                    <div className="absolute -top-1.5 -right-1.5 bg-white text-red-500 text-xs font-black px-1.5 py-0.5 rounded-full animate-pulse">
-                      GRATIS
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                {/* Video Column - Left side on desktop, top on mobile */}
+                <div className="order-2 lg:order-1">
+                  <div className="relative bg-gray-900/50 rounded-xl lg:rounded-2xl p-3 md:p-4 lg:p-6 border border-gray-700">
+                    <div className="aspect-video rounded-lg lg:rounded-xl overflow-hidden">
+                      <iframe
+                        src="https://www.youtube.com/embed/QR07EEGK7p0"
+                        title="Cómo funciona 1minuto"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                      ></iframe>
                     </div>
-                  </a>
+                  </div>
                 </div>
 
-                <button
-                  onClick={() => handleWhatsAppClick("hero_trial")}
-                  className="bg-white hover:bg-gray-100 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 w-full sm:w-auto justify-center border border-gray-300"
-                >
-                  <MessageCircle size={16} />
-                  <span>Probá 15 días gratis</span>
-                </button>
+                {/* Content Column - Right side on desktop, bottom on mobile */}
+                <div className="order-1 lg:order-2 text-center lg:text-left">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+                    <span className="text-white">Dejá de vivir</span>
+                    <span className="block text-red-500">pegado al celular</span>
+                  </h1>
+                  <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6 md:mb-8 px-2 lg:px-0">
+                    Tus clientes toman turnos solos. Vos recuperás tu tiempo libre.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start items-center px-4 lg:px-0">
+                    <div className="relative group">
+                      {/* Animated background glow */}
+                      <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-white to-red-500 rounded-full blur opacity-75 group-hover:opacity-100 animate-pulse"></div>
 
-                <p className="text-gray-400 text-sm">Sin tarjeta de crédito</p>
+                      <a
+                        href="https://turnopeluqueria-1minuto.lovable.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={handleDemoClick}
+                        className="relative bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-base sm:text-lg font-bold transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 flex items-center gap-2 w-full sm:w-auto justify-center border-2 border-white shadow-lg shadow-white/30"
+                      >
+                        <span className="text-lg animate-pulse">🔥</span>
+                        <span className="font-black">PROBA LA DEMO</span>
+                        <span className="text-lg animate-bounce">👆</span>
+                        <div className="absolute -top-1.5 -right-1.5 bg-white text-red-500 text-xs font-black px-1.5 py-0.5 rounded-full animate-pulse">
+                          GRATIS
+                        </div>
+                      </a>
+                    </div>
+
+                    <button
+                      onClick={() => handleWhatsAppClick("hero_trial")}
+                      className="bg-white hover:bg-gray-100 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 w-full sm:w-auto justify-center border border-gray-300"
+                    >
+                      <MessageCircle size={16} />
+                      <span>Probá 15 días gratis</span>
+                    </button>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-4 text-center lg:text-left">Sin tarjeta de crédito</p>
+                </div>
               </div>
             </div>
           </section>
@@ -107,28 +126,7 @@ export default function LandingPage() {
             <div
               className={`transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             >
-              <div className="max-w-4xl mx-auto px-4">
-                <div className="text-center mb-8 md:mb-12">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
-                    Mirá cómo funciona <span className="text-red-500">1minuto</span>
-                  </h2>
-                  <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
-                    En este video te mostramos paso a paso cómo funciona 1minuto del lado del cliente
-                  </p>
-                </div>
-
-                <div className="relative bg-gray-900/50 rounded-2xl p-4 md:p-6 border border-gray-700">
-                  <div className="aspect-video rounded-xl overflow-hidden">
-                    <iframe
-                      src="https://www.youtube.com/embed/QR07EEGK7p0"
-                      title="Cómo funciona 1minuto"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                    ></iframe>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </section>
 
