@@ -22,14 +22,6 @@ export default function LandingPage() {
     trackReferralClick()
   }
 
-  const catalogUrl = "https://catalogo1minuto.vercel.app/"
-  const handleCatalogClick = () => {
-    trackEvent("catalog_nav_click", {
-      event_category: "navigation",
-      event_label: "catalog_header",
-    })
-  }
-
   useEffect(() => {
     setIsVisible(true)
     // Track page load
@@ -41,148 +33,99 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Fixed Header - Mobile First */}
+      {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
-        {/* Mobile Layout - Stacked */}
-        <div className="w-full px-4 py-2 sm:hidden relative">
-          {/* Logo and CTAs */}
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1Minuto%20%281%29-vgtWesMNDiu2R1ZAT4OmxitPpcSZJl.png"
-                alt="1minuto logo"
-                className="h-8 w-auto"
-              />
-            </div>
-            
-            {/* Mobile CTAs (removido para ajustar alto del header) */}
-            <div className="flex items-center" />
-
-            {/* Mobile: Botón Catálogo digital centrado en el header */}
-            <div className="absolute left-1/2 -translate-x-1/2 nav-cta-mobile">
-              <a
-                href={catalogUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleCatalogClick}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors"
-              >
-                <span>Tenemos catalogo digital</span>
-              </a>
-            </div>
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center">
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1Minuto%20%281%29-vgtWesMNDiu2R1ZAT4OmxitPpcSZJl.png"
+              alt="1minuto logo"
+              className="h-10 w-auto"
+            />
           </div>
-        </div>
-
-        {/* Desktop Layout - Horizontal */}
-        <div className="hidden sm:flex w-full px-4 sm:px-6 py-3 justify-between items-center relative">
-          {/* Logo and Navigation */}
-          <div className="flex items-center space-x-6 sm:space-x-8">
-            <div className="flex items-center">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1Minuto%20%281%29-vgtWesMNDiu2R1ZAT4OmxitPpcSZJl.png"
-                alt="1minuto logo"
-                className="h-10 w-auto"
-              />
-            </div>
-            
-            {/* Desktop Navigation Menu */}
-            <nav className="flex items-center space-x-6 lg:space-x-8">
-           
-            </nav>
-          </div>
-
-          {/* Desktop: Catálogo Digital centered button */}
-          <div className="absolute left-1/2 -translate-x-1/2 nav-cta-pulse">
-            <a
-              href={catalogUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleCatalogClick}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-gray-700 text-gray-200 hover:text-white hover:border-red-500/60 hover:bg-red-500/10 transition-colors"
-            >
-              También tenemos <span className="font-semibold text-white">Catálogo digital</span>
-            </a>
-          </div>
-
-          {/* Desktop CTA Buttons */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
-            {/* WhatsApp Button */}
-            <button
-              onClick={() => handleWhatsAppClick("header")}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
-            >
-              <MessageCircle size={16} />
-              <span>Probalo</span>
-            </button>
-            
-         
-          </div>
+          <button
+            onClick={() => handleWhatsAppClick("header")}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
+          >
+            <MessageCircle size={16} />
+            <span className="hidden sm:inline">15 días gratis</span>
+            <span className="sm:hidden">15 días gratis</span>
+          </button>
         </div>
       </header>
 
-      {/* Hero Section with Video */}
-      <main className="pt-16 pb-6 sm:pb-8">
-        <div className="w-full px-4 sm:px-6">
-          <section className="py-6 sm:py-8 md:py-12 lg:py-16">
+      {/* Hero Section */}
+      <main className="pt-16 pb-8">
+        <div className="container mx-auto px-4">
+          <section className="text-center py-8 md:py-16">
             <div
               className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             >
-              {/* Mobile: Stacked, Desktop: Side by Side */}
-              <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
-                {/* Left Side - Hero Text */}
-                <div className="text-center lg:text-left space-y-4 sm:space-y-6">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                    <span className="text-white">Dejá de vivir</span>
-                    <span className="block text-red-500">pegado al celular</span>
-                  </h1>
-                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-lg sm:max-w-2xl lg:max-w-none mx-auto lg:mx-0 leading-relaxed">
-                    Tus clientes toman turnos solos. Vos recuperás tu tiempo libre.
-                  </p>
-                  
-                  {/* CTA Button */}
-                  <div className="space-y-3 sm:space-y-4">
-                    <div className="relative group">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-white to-red-500 rounded-full blur opacity-75 group-hover:opacity-100 animate-pulse"></div>
-                      <a
-                        href="https://turnopeluqueria-1minuto.lovable.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={handleDemoClick}
-                        className="relative bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full text-base sm:text-lg lg:text-xl font-bold transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center border-2 border-white shadow-lg shadow-white/30"
-                      >
-                        <span className="text-xl sm:text-2xl animate-pulse">🔥</span>
-                        <span className="font-black">PROBA LA DEMO</span>
-                        <span className="text-xl sm:text-2xl animate-bounce">👆</span>
-                        <div className="absolute -top-2 -right-2 bg-white text-red-500 text-xs font-black px-2 py-1 rounded-full animate-pulse">
-                          GRATIS
-                        </div>
-                      </a>
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+                <span className="text-white">Dejá de vivir</span>
+                <span className="block text-red-500">pegado al celular</span>
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8 px-2">
+                Tus clientes toman turnos solos. Vos recuperás tu tiempo libre.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center items-center px-4">
+                <div className="relative group">
+                  {/* Animated background glow */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-white to-red-500 rounded-full blur opacity-75 group-hover:opacity-100 animate-pulse"></div>
+
+                  <a
+                    href="https://turnopeluqueria-1minuto.lovable.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleDemoClick}
+                    className="relative bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-base sm:text-lg font-bold transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 flex items-center gap-2 w-full sm:w-auto justify-center border-2 border-white shadow-lg shadow-white/30"
+                  >
+                    <span className="text-lg animate-pulse">🔥</span>
+                    <span className="font-black">PROBA LA DEMO</span>
+                    <span className="text-lg animate-bounce">👆</span>
+                    <div className="absolute -top-1.5 -right-1.5 bg-white text-red-500 text-xs font-black px-1.5 py-0.5 rounded-full animate-pulse">
+                      GRATIS
                     </div>
-                    <p className="text-gray-400 text-xs sm:text-sm">Sin tarjeta de crédito</p>
-                  </div>
+                  </a>
                 </div>
 
-                {/* Right Side - Video */}
-                <div className="space-y-4 sm:space-y-6">
-                  <div className="text-center lg:text-left">
-                    <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3">
-                      Mirá cómo funciona <span className="text-red-500">1minuto</span>
-                    </h2>
-                    <p className="text-gray-400 text-sm sm:text-base max-w-lg lg:max-w-none mx-auto lg:mx-0">
-                      En este video te mostramos paso a paso cómo funciona 1minuto del lado del cliente
-                    </p>
-                  </div>
-                  
-                  <div className="relative bg-gray-900/50 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-gray-700">
-                    <div className="aspect-video rounded-lg sm:rounded-xl overflow-hidden">
-                      <iframe
-                        src="https://www.youtube.com/embed/QR07EEGK7p0?autoplay=1&mute=1&controls=1"
-                        title="Cómo funciona 1minuto"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full"
-                      ></iframe>
-                    </div>
+                <button
+                  onClick={() => handleWhatsAppClick("hero_trial")}
+                  className="bg-white hover:bg-gray-100 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 w-full sm:w-auto justify-center border border-gray-300"
+                >
+                  <MessageCircle size={16} />
+                  <span>Probá 15 días gratis</span>
+                </button>
+
+                <p className="text-gray-400 text-sm">Sin tarjeta de crédito</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Video Section */}
+          <section className="py-12 md:py-16">
+            <div
+              className={`transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            >
+              <div className="max-w-4xl mx-auto px-4">
+                <div className="text-center mb-8 md:mb-12">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
+                    Mirá cómo funciona <span className="text-red-500">1minuto</span>
+                  </h2>
+                  <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
+                    En este video te mostramos paso a paso cómo funciona 1minuto del lado del cliente
+                  </p>
+                </div>
+
+                <div className="relative bg-gray-900/50 rounded-2xl p-4 md:p-6 border border-gray-700">
+                  <div className="aspect-video rounded-xl overflow-hidden">
+                    <iframe
+                      src="https://www.youtube.com/embed/QR07EEGK7p0"
+                      title="Cómo funciona 1minuto"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                    ></iframe>
                   </div>
                 </div>
               </div>
@@ -190,10 +133,8 @@ export default function LandingPage() {
           </section>
 
           {/* Mercado Pago Badge */}
-          
 
           {/* Demo Image */}
-          
 
           {/* Benefits Section */}
           <section className="py-8 md:py-12">
@@ -269,7 +210,6 @@ export default function LandingPage() {
           </section>
 
           {/* Payment Methods */}
-          
 
           {/* Pricing */}
           <section className="py-12 md:py-16">
@@ -334,8 +274,7 @@ export default function LandingPage() {
                       className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 flex items-center justify-center gap-1 sm:gap-2 md:gap-3"
                     >
                       <MessageCircle size={18} />
-                      <span className="text-sm sm:text-base md:text-lg">Empezar a ahorrar tiempo</span>
-                      
+                      <span className="text-sm sm:text-base md:text-lg">15 días gratis</span>
                     </button>
                   </div>
                 </div>
@@ -381,7 +320,7 @@ export default function LandingPage() {
                       onClick={() => handleWhatsAppClick("referral")}
                       className="bg-green-500 hover:bg-green-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25 flex items-center justify-center gap-2 w-full sm:w-auto justify-center"
                     >
-                      Quiero referir amigos
+                      15 días gratis
                       <MessageCircle size={18} />
                     </button>
                     <p className="text-gray-400 text-sm">Sin límite de referidos</p>
@@ -407,7 +346,7 @@ export default function LandingPage() {
                   onClick={() => handleWhatsAppClick("final_cta")}
                   className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                 >
-                  Probalo 
+                  15 días gratis
                   <MessageCircle size={18} />
                 </button>
               </div>
