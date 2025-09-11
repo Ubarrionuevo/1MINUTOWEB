@@ -344,11 +344,26 @@ export default function LandingPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 px-4">
                 <button
                   onClick={() => handleWhatsAppClick("final_cta")}
-                  className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                  className="bg-red-500 hover:bg-red-600 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl min-w-[280px] sm:min-w-[320px]"
                 >
-                  15 días gratis
-                  <MessageCircle size={18} />
+                  <MessageCircle size={20} />
+                  <span>15 días gratis</span>
                 </button>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 justify-center items-center text-sm text-gray-400 mt-4">
+                <div className="flex items-center gap-2">
+                  <CheckCircle size={16} className="text-green-500" />
+                  <span>Sin tarjeta de crédito</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle size={16} className="text-green-500" />
+                  <span>Cancelás cuando quieras</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle size={16} className="text-green-500" />
+                  <span>Configuración en 5 minutos</span>
+                </div>
               </div>
             </div>
           </section>
