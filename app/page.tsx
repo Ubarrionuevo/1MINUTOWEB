@@ -225,7 +225,7 @@ export default function LandingPage() {
                   <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-2xl p-6 md:p-8 border border-red-500/50 text-center">
                     <div className="text-center mb-4 md:mb-6">
                       <h3 className="font-bold text-white text-lg md:text-xl">Plan 1minuto</h3>
-                      <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2">$9.000 ARS</div>
+                      <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2">$10.000 ARS</div>
                       <p className="text-gray-400">Por mes</p>
                     </div>
                     <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 text-left">
