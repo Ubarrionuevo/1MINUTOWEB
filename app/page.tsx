@@ -1,11 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { MessageCircle, Clock, Smartphone, Moon, Settings, Users, Heart, CheckCircle } from "lucide-react"
+import { MessageCircle, Clock, Smartphone, Moon, Settings, Users, Heart, CheckCircle, X } from "lucide-react"
 import { trackWhatsAppClick, trackDemoClick, trackReferralClick, trackEvent } from "@/lib/analytics"
 
 export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
 
   const whatsappLink = "https://wa.me/5493834035119?text=Hola%2C%20quiero%20probar%201minuto"
 
@@ -43,14 +44,22 @@ export default function LandingPage() {
               className="h-10 w-auto"
             />
           </div>
-          <button
-            onClick={() => handleWhatsAppClick("header")}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
-          >
-            <MessageCircle size={16} />
-            <span className="hidden sm:inline">15 días gratis</span>
-            <span className="sm:hidden">15 días gratis</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowLogin(true)}
+              className="bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300"
+            >
+              Iniciar sesión
+            </button>
+            <button
+              onClick={() => handleWhatsAppClick("header")}
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
+            >
+              <MessageCircle size={16} />
+              <span className="hidden sm:inline">15 días gratis</span>
+              <span className="sm:hidden">15 días gratis</span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -393,6 +402,50 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {showLogin && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4">
+          <div className="w-full max-w-md rounded-2xl border border-gray-800 bg-gray-950 p-6 shadow-2xl">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold text-white">Bienvenido nuevamente</h3>
+              <button
+                onClick={() => setShowLogin(false)}
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Cerrar modal de login"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <p className="text-gray-400 text-sm mb-6">
+              Ingresá con tus credenciales para acceder al panel de 1minuto.
+            </p>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm text-gray-300 mb-2">Email</label>
+                <input
+                  type="email"
+                  placeholder="nombre@clinica.com"
+                  className="w-full rounded-xl border border-gray-800 bg-gray-900/60 px-4 py-3 text-sm text-white outline-none focus:border-red-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-gray-300 mb-2">Contraseña</label>
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  className="w-full rounded-xl border border-gray-800 bg-gray-900/60 px-4 py-3 text-sm text-white outline-none focus:border-red-500"
+                />
+              </div>
+            </div>
+            <button className="mt-6 w-full rounded-full bg-red-500 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-red-600">
+              Ingresar
+            </button>
+            <p className="mt-4 text-center text-xs text-gray-500">
+              *Este es un mockup estático para validar cambios de despliegue.
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className="fixed bottom-6 right-6 z-40"></div>
     </div>
