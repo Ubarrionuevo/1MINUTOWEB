@@ -56,8 +56,8 @@ export default function LandingPage() {
               className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
             >
               <MessageCircle size={16} />
-              <span className="hidden sm:inline">15 días gratis</span>
-              <span className="sm:hidden">15 días gratis</span>
+              <span className="hidden sm:inline">Probá gratis</span>
+              <span className="sm:hidden">Probá gratis</span>
             </button>
           </div>
         </div>
