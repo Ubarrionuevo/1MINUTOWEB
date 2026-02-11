@@ -121,7 +121,7 @@ export default function LandingPage() {
                       className="bg-white hover:bg-gray-100 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 w-full sm:w-auto justify-center border border-gray-300"
                     >
                       <MessageCircle size={16} />
-                      <span>Probá 15 días gratis</span>
+                      <span>Probá gratis</span>
                     </button>
                   </div>
                   <p className="text-gray-400 text-sm mt-4 text-center lg:text-left">Sin tarjeta de crédito</p>
