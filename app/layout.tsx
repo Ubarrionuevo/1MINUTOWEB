@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Inter } from 'next/font/google'
 import "./globals.css"
 import Script from 'next/script'
+import MetaPixelTracker from "@/components/MetaPixelTracker"
+
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -73,6 +75,8 @@ fbq('track', 'PageView');
       src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
     />
   </noscript>
+        <MetaPixelTracker />
+  {children}
       </body>
     </html>
   )
