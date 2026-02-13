@@ -30,7 +30,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-<script>
+
+<Script id="meta-pixel" strategy="afterInteractive">
+{`
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -39,13 +41,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '1622275698960701');
 fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
-/></noscript>
-
+`}
+</Script>
         
         {/* Google Analytics */}
         <Script
@@ -64,7 +64,16 @@ src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
           `}
         </Script>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>{children}
+        <noscript>
+    <img
+      height="1"
+      width="1"
+      style={{ display: "none" }}
+      src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
+    />
+  </noscript>
+      </body>
     </html>
   )
 }
