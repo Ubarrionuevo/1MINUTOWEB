@@ -1,3 +1,4 @@
+// Fixed: viewport export, Suspense boundary for MetaPixelTracker, removed raw script tags from page.tsx
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from 'next/font/google'
