@@ -1,12 +1,19 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from 'next/font/google'
 import "./globals.css"
 import Script from 'next/script'
+import { Suspense } from "react"
 import MetaPixelTracker from "@/components/MetaPixelTracker"
 
 
 const inter = Inter({ subsets: ["latin"] })
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#000000",
+}
 
 export const metadata: Metadata = {
   title: "1minuto",
@@ -14,14 +21,12 @@ export const metadata: Metadata = {
     "Catálogo Digital con Mercado Pago y Turnero Online Inteligente. Soluciones simples para hacer crecer tu negocio en 1 minuto.",
   keywords: "catálogo digital, turnero online, mercado pago, whatsapp, productos digitales",
   authors: [{ name: "1minuto" }],
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#000000",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
-    generator: 'v0.app'
+  generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -77,7 +82,9 @@ fbq('track', 'PageView');
             alt=""
           />
         </noscript>
-        <MetaPixelTracker />
+        <Suspense fallback={null}>
+          <MetaPixelTracker />
+        </Suspense>
       </body>
     </html>
   )
