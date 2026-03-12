@@ -66,17 +66,18 @@ fbq('track', 'PageView');
           `}
         </Script>
       </head>
-      <body className={inter.className}>{children}
+      <body className={inter.className}>
+        {children}
         <noscript>
-    <img
-      height="1"
-      width="1"
-      style={{ display: "none" }}
-      src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
-    />
-  </noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
         <MetaPixelTracker />
-  {children}
       </body>
     </html>
   )
