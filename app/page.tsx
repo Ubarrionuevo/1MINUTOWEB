@@ -1,12 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { MessageCircle, Clock, Smartphone, Moon, Settings, Users, Heart, CheckCircle, X } from "lucide-react"
+import { MessageCircle, Clock, Smartphone, Moon, Settings, Users, Heart, CheckCircle } from "lucide-react"
 import { trackWhatsAppClick, trackDemoClick, trackReferralClick, trackEvent } from "@/lib/analytics"
 
 export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false)
-  const [showLogin, setShowLogin] = useState(false)
 
   const whatsappLink = "https://wa.me/5493834035119?text=Hola%2C%20quiero%20probar%201minuto"
 
@@ -36,23 +35,6 @@ export default function LandingPage() {
     <div className="min-h-screen bg-black text-white">
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
-
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1622275698960701');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
-/></noscript>
-
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center">
             <img
@@ -62,12 +44,6 @@ src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
             />
           </div>
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowLogin(true)}
-              className="bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300"
-            >
-              Iniciar sesión
-            </button>
             <button
               onClick={() => handleWhatsAppClick("header")}
               className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
@@ -251,14 +227,17 @@ src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
                   <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-2xl p-6 md:p-8 border border-red-500/50 text-center">
                     <div className="text-center mb-4 md:mb-6">
                       <h3 className="font-bold text-white text-lg md:text-xl">Plan 1minuto</h3>
-                      <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2">$10.000 ARS</div>
+                      <div className="text-3xl md:text-4xl font-bold text-red-500 mb-1">$20.000 ARS</div>
+                      <p className="text-gray-400 text-sm mb-1">{"≈ $20 USD"}</p>
                       <p className="text-gray-400">Por mes</p>
+                      <p className="text-green-500 text-sm font-medium mt-2">Menos de $0.70 por día</p>
                     </div>
+                    <p className="text-center text-gray-300 text-sm mb-4 font-medium">+120 negocios ya automatizan sus turnos</p>
                     <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 text-left">
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
                         <span className="text-sm md:text-base">
-                          Tus clientes se autogestionan 24/7 (incluso mientras dormís)
+                          Tus clientes reservan turnos solos 24/7 (incluso mientras dormís)
                         </span>
                       </li>
                       <li className="flex items-start gap-2 md:gap-3">
@@ -267,26 +246,15 @@ src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
                       </li>
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm md:text-base">Cancelación y reprogramación automática</span>
+                        <span className="text-sm md:text-base">Tus clientes pueden cambiar o cancelar turnos sin escribirte</span>
                       </li>
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm md:text-base">Recordatorios automáticos por WhatsApp</span>
+                        <span className="text-sm md:text-base">Tus clientes no se olvidan del turno gracias a recordatorios por WhatsApp</span>
                       </li>
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
                         <span className="text-sm md:text-base">Soporte humano real, sin bots</span>
-                      </li>
-                      <li className="flex items-start gap-2 md:gap-3">
-                        <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="flex items-center gap-2 text-sm md:text-base">
-                          <img
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mercadop%C3%A1go-B1pZpzWnTI9D5Mgxvkip4xQXtUF8v4.png"
-                            alt="MP"
-                            className="w-3 h-3 md:w-4 md:h-4"
-                          />
-                          Cobro de señas con Mercado Pago
-                        </span>
                       </li>
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
@@ -298,8 +266,9 @@ src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
                       className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 flex items-center justify-center gap-1 sm:gap-2 md:gap-3"
                     >
                       <MessageCircle size={18} />
-                      <span className="text-sm sm:text-base md:text-lg">15 días gratis</span>
+                      <span className="text-sm sm:text-base md:text-lg">Empezar 15 días gratis</span>
                     </button>
+                    <p className="text-center text-gray-400 text-xs mt-3">No requiere tarjeta • Cancelás cuando quieras</p>
                   </div>
                 </div>
               </div>
@@ -419,50 +388,6 @@ src="https://www.facebook.com/tr?id=1622275698960701&ev=PageView&noscript=1"
           </div>
         </div>
       </footer>
-
-      {showLogin && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4">
-          <div className="w-full max-w-md rounded-2xl border border-gray-800 bg-gray-950 p-6 shadow-2xl">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold text-white">Bienvenido nuevamente</h3>
-              <button
-                onClick={() => setShowLogin(false)}
-                className="text-gray-400 hover:text-white transition-colors"
-                aria-label="Cerrar modal de login"
-              >
-                <X size={20} />
-              </button>
-            </div>
-            <p className="text-gray-400 text-sm mb-6">
-              Ingresá con tus credenciales para acceder al panel de 1minuto.
-            </p>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm text-gray-300 mb-2">Email</label>
-                <input
-                  type="email"
-                  placeholder="nombre@clinica.com"
-                  className="w-full rounded-xl border border-gray-800 bg-gray-900/60 px-4 py-3 text-sm text-white outline-none focus:border-red-500"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-300 mb-2">Contraseña</label>
-                <input
-                  type="password"
-                  placeholder="••••••••"
-                  className="w-full rounded-xl border border-gray-800 bg-gray-900/60 px-4 py-3 text-sm text-white outline-none focus:border-red-500"
-                />
-              </div>
-            </div>
-            <button className="mt-6 w-full rounded-full bg-red-500 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-red-600">
-              Ingresar
-            </button>
-            <p className="mt-4 text-center text-xs text-gray-500">
-              *Este es un mockup estático para validar cambios de despliegue.
-            </p>
-          </div>
-        </div>
-      )}
 
       <div className="fixed bottom-6 right-6 z-40"></div>
     </div>
