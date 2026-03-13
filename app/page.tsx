@@ -44,17 +44,11 @@ export default function LandingPage() {
               className="h-10 w-auto"
             />
           </div>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowLogin(true)}
-              className="bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300"
-            >
-              Iniciar sesión
-            </button>
-            <button
-              onClick={() => handleWhatsAppClick("header")}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
-            >
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => handleWhatsAppClick("header")}
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
+              >
               <MessageCircle size={16} />
               <span className="hidden sm:inline">15 días gratis</span>
               <span className="sm:hidden">15 días gratis</span>
@@ -259,17 +253,6 @@ export default function LandingPage() {
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
                         <span className="text-sm md:text-base">Soporte humano real, sin bots</span>
-                      </li>
-                      <li className="flex items-start gap-2 md:gap-3">
-                        <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="flex items-center gap-2 text-sm md:text-base">
-                          <img
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mercadop%C3%A1go-B1pZpzWnTI9D5Mgxvkip4xQXtUF8v4.png"
-                            alt="MP"
-                            className="w-3 h-3 md:w-4 md:h-4"
-                          />
-                          Cobro de señas con Mercado Pago
-                        </span>
                       </li>
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
