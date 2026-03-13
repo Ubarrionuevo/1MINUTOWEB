@@ -234,7 +234,7 @@ export default function LandingPage() {
                   <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-2xl p-6 md:p-8 border border-red-500/50 text-center">
                     <div className="text-center mb-4 md:mb-6">
                       <h3 className="font-bold text-white text-lg md:text-xl">Plan 1minuto</h3>
-                      <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2">$10.000 ARS</div>
+                      <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2">$20.000 ARS</div>
                       <p className="text-gray-400">Por mes</p>
                     </div>
                     <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 text-left">
@@ -259,17 +259,6 @@ export default function LandingPage() {
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
                         <span className="text-sm md:text-base">Soporte humano real, sin bots</span>
-                      </li>
-                      <li className="flex items-start gap-2 md:gap-3">
-                        <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="flex items-center gap-2 text-sm md:text-base">
-                          <img
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mercadop%C3%A1go-B1pZpzWnTI9D5Mgxvkip4xQXtUF8v4.png"
-                            alt="MP"
-                            className="w-3 h-3 md:w-4 md:h-4"
-                          />
-                          Cobro de señas con Mercado Pago
-                        </span>
                       </li>
                       <li className="flex items-start gap-2 md:gap-3">
                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
