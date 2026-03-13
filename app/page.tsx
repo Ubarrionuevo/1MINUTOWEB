@@ -292,7 +292,7 @@ export default function LandingPage() {
                   </h2>
                   <p className="text-lg md:text-xl text-gray-300 mb-4 md:mb-6 max-w-2xl mx-auto">
                     Por cada amigo que se suscriba con tu recomendación,{" "}
-                    <span className="text-green-500 font-semibold">te abonamos $9.000 ARS</span>
+                    <span className="text-green-500 font-semibold">te abonamos $20.000 ARS</span>
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
                     <div className="bg-black/20 rounded-xl p-3 md:p-4">
