@@ -7,6 +7,7 @@ import { trackWhatsAppClick, trackDemoClick, trackReferralClick, trackEvent } fr
 export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
+  const [showUSD, setShowUSD] = useState(false)
 
   const whatsappLink = "https://wa.me/5493834035119?text=Hola%2C%20quiero%20probar%201minuto"
 
@@ -30,6 +31,14 @@ export default function LandingPage() {
       event_category: "engagement",
       event_label: "landing_page",
     })
+  }, [])
+
+  // Price toggle effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowUSD((prev) => !prev)
+    }, 3000)
+    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -228,7 +237,22 @@ export default function LandingPage() {
                   <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-2xl p-6 md:p-8 border border-red-500/50 text-center">
                     <div className="text-center mb-4 md:mb-6">
                       <h3 className="font-bold text-white text-lg md:text-xl">Plan 1minuto</h3>
-                      <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2">$20.000 ARS</div>
+                      <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2 h-10 md:h-12 relative overflow-hidden">
+                        <span
+                          className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
+                            showUSD ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0"
+                          }`}
+                        >
+                          $20.000 ARS
+                        </span>
+                        <span
+                          className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
+                            showUSD ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"
+                          }`}
+                        >
+                          $20 USD
+                        </span>
+                      </div>
                       <p className="text-gray-400">Por mes</p>
                     </div>
                     <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 text-left">
