@@ -1,11 +1,17 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from 'next/font/google'
 import "./globals.css"
 import Script from 'next/script'
 
-
 const inter = Inter({ subsets: ["latin"] })
+
+// Next.js 14+ requires viewport to be exported separately
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#000000",
+}
 
 export const metadata: Metadata = {
   title: "Turnos por WhatsApp | Automatiza tu agenda facil - 1minuto",
@@ -13,8 +19,6 @@ export const metadata: Metadata = {
     "Automatiza tus turnos y recibilos directo en WhatsApp. Ahorra tiempo y organiza tu agenda sin esfuerzo. Sistema de turnos online simple para negocios.",
   keywords: "turnos por whatsapp, reservas por whatsapp, sistema de turnos online, agenda automatica, turnero simple, turnos online, reservas online",
   authors: [{ name: "1minuto" }],
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#000000",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",

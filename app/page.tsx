@@ -6,7 +6,6 @@ import { trackWhatsAppClick, trackDemoClick, trackReferralClick, trackEvent } fr
 
 export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false)
-  const [showLogin, setShowLogin] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const whatsappLink = "https://wa.me/5493834035119?text=Hola%2C%20quiero%20probar%201minuto"
