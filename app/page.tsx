@@ -1,12 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { MessageCircle, Clock, Smartphone, Moon, Settings, Users, Heart, CheckCircle, X } from "lucide-react"
+import { MessageCircle, Clock, Smartphone, Moon, Settings, Users, Heart, CheckCircle, X, ChevronDown, Scissors, Sparkles, Stethoscope, Briefcase, Calendar } from "lucide-react"
 import { trackWhatsAppClick, trackDemoClick, trackReferralClick, trackEvent } from "@/lib/analytics"
 
 export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false)
-  const [showLogin, setShowLogin] = useState(false) 
+  const [showLogin, setShowLogin] = useState(false)
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const whatsappLink = "https://wa.me/5493834035119?text=Hola%2C%20quiero%20probar%201minuto"
 
@@ -25,25 +26,73 @@ export default function LandingPage() {
 
   useEffect(() => {
     setIsVisible(true)
-    // Track page load
     trackEvent("page_load", {
       event_category: "engagement",
       event_label: "landing_page",
     })
   }, [])
 
+  const faqs = [
+    {
+      question: "¿Como funcionan los turnos por WhatsApp?",
+      answer: "Tu cliente entra al link de tu agenda, elige dia y horario, completa sus datos y automaticamente se abre WhatsApp con el turno listo para enviar. Vos recibis el mensaje y listo."
+    },
+    {
+      question: "¿Necesito instalar algo?",
+      answer: "No. 1minuto funciona 100% online. Solo necesitas compartir el link de tu agenda con tus clientes. Ellos tampoco necesitan instalar nada."
+    },
+    {
+      question: "¿Sirve para mi negocio?",
+      answer: "Si trabajas con turnos o reservas, si. Funciona perfecto para peluquerias, barberias, esteticas, consultorios, profesionales independientes y cualquier servicio que necesite agendar citas."
+    },
+    {
+      question: "¿Como recibe el turno el cliente?",
+      answer: "Cuando tu cliente reserva, se abre WhatsApp automaticamente con todos los datos del turno. Solo tiene que enviarlo y vos lo recibis al instante."
+    },
+    {
+      question: "¿Se puede personalizar?",
+      answer: "Si. Podes configurar tus servicios, precios, horarios disponibles, duracion de cada turno y mas. Todo se adapta a como trabajas vos."
+    },
+    {
+      question: "¿Cuanto tiempo tarda configurarlo?",
+      answer: "Menos de 5 minutos. Completas los datos de tu negocio, configuras tus servicios y horarios, y ya tenes tu agenda lista para compartir."
+    }
+  ]
+
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* JSON-LD Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "1minuto",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "Sistema de turnos online que envia las reservas directo a WhatsApp. Automatiza tu agenda y ahorra tiempo.",
+            "offers": {
+              "@type": "Offer",
+              "price": "20000",
+              "priceCurrency": "ARS"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "150"
+            }
+          })
+        }}
+      />
+
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
-
-
-
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center">
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1Minuto%20%281%29-vgtWesMNDiu2R1ZAT4OmxitPpcSZJl.png"
-              alt="1minuto logo"
+              alt="1minuto - Sistema de turnos por WhatsApp"
               className="h-10 w-auto"
             />
           </div>
@@ -53,8 +102,7 @@ export default function LandingPage() {
               className="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
             >
               <MessageCircle size={16} />
-              <span className="hidden sm:inline">15 días gratis</span>
-              <span className="sm:hidden">15 días gratis</span>
+              <span>Empezar gratis</span>
             </button>
           </div>
         </div>
@@ -74,9 +122,10 @@ export default function LandingPage() {
                     <div className="aspect-video rounded-lg lg:rounded-xl overflow-hidden">
                       <iframe
                         src="https://www.youtube.com/embed/QR07EEGK7p0"
-                        title="Cómo funciona 1minuto"
+                        title="Como funciona 1minuto - Sistema de turnos por WhatsApp"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
+                        loading="lazy"
                         className="w-full h-full"
                       ></iframe>
                     </div>
@@ -86,17 +135,32 @@ export default function LandingPage() {
                 {/* Content Column - Right side on desktop, bottom on mobile */}
                 <div className="order-1 lg:order-2 text-center lg:text-left">
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                    <span className="text-white">Dejá de vivir</span>
-                    <span className="block text-red-500">pegado al celular</span>
+                    <span className="text-white">Turnos online que</span>
+                    <span className="block text-red-500">terminan en WhatsApp</span>
                   </h1>
-                  <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6 md:mb-8 px-2 lg:px-0">
-                    Tus clientes toman turnos solos. Vos recuperás tu tiempo libre.
+                  <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-4 md:mb-6 px-2 lg:px-0">
+                    Tus clientes reservan en segundos y el turno te llega listo por WhatsApp. Sin idas y vueltas.
                   </p>
+                  
+                  {/* Bullets */}
+                  <ul className="text-left max-w-md mx-auto lg:mx-0 mb-6 space-y-2">
+                    <li className="flex items-center gap-2 text-gray-300">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <span>Confirmacion automatica de turnos</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-gray-300">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <span>Menos mensajes manuales</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-gray-300">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <span>Todo organizado en tu WhatsApp</span>
+                    </li>
+                  </ul>
+
                   <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start items-center px-4 lg:px-0">
                     <div className="relative group">
-                      {/* Animated background glow */}
                       <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-white to-red-500 rounded-full blur opacity-75 group-hover:opacity-100 animate-pulse"></div>
-
                       <a
                         href="https://turnopeluqueria-1minuto.lovable.app/"
                         target="_blank"
@@ -104,9 +168,7 @@ export default function LandingPage() {
                         onClick={handleDemoClick}
                         className="relative bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-base sm:text-lg font-bold transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 flex items-center gap-2 w-full sm:w-auto justify-center border-2 border-white shadow-lg shadow-white/30"
                       >
-                        <span className="text-lg animate-pulse">🔥</span>
-                        <span className="font-black">PROBA LA DEMO</span>
-                        <span className="text-lg animate-bounce">👆</span>
+                        <span className="font-black">Ver demo en 1 minuto</span>
                         <div className="absolute -top-1.5 -right-1.5 bg-white text-red-500 text-xs font-black px-1.5 py-0.5 rounded-full animate-pulse">
                           GRATIS
                         </div>
@@ -118,84 +180,101 @@ export default function LandingPage() {
                       className="bg-white hover:bg-gray-100 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 w-full sm:w-auto justify-center border border-gray-300"
                     >
                       <MessageCircle size={16} />
-                      <span>Probá 15 días gratis</span>
+                      <span>Empezar gratis</span>
                     </button>
                   </div>
-                  <p className="text-gray-400 text-sm mt-4 text-center lg:text-left">Sin tarjeta de crédito</p>
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center lg:justify-start text-gray-400 text-sm mt-4">
+                    <span>Sin tarjeta de credito</span>
+                    <span className="hidden sm:inline">•</span>
+                    <span>Configuracion en menos de 5 minutos</span>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Video Section */}
+          {/* How it Works Section */}
           <section className="py-12 md:py-16">
             <div
-              className={`transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              className={`transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             >
-              
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 px-4">
+                ¿Como <span className="text-red-500">funciona</span>?
+              </h2>
+              <p className="text-center text-gray-400 mb-8 md:mb-12 max-w-2xl mx-auto px-4">
+                Asi de simple es recibir turnos por WhatsApp
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto px-4">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                    1
+                  </div>
+                  <h3 className="font-semibold text-white mb-2 text-lg">El cliente elige dia y horario</h3>
+                  <p className="text-gray-400 text-sm">
+                    Entra a tu link, ve tus servicios y horarios disponibles, y selecciona cuando quiere venir.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                    2
+                  </div>
+                  <h3 className="font-semibold text-white mb-2 text-lg">Completa sus datos en segundos</h3>
+                  <p className="text-gray-400 text-sm">
+                    Nombre y telefono. Nada mas. Sin registros complicados ni formularios largos.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                    3
+                  </div>
+                  <h3 className="font-semibold text-white mb-2 text-lg">Se abre WhatsApp con el turno listo</h3>
+                  <p className="text-gray-400 text-sm">
+                    Automaticamente se abre WhatsApp con todos los datos. Solo envia y listo.
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 
-          {/* Mercado Pago Badge */}
-
-          {/* Demo Image */}
-
-          {/* Benefits Section */}
+          {/* Benefits Section - Pain Points */}
           <section className="py-8 md:py-12">
             <div
-              className={`transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              className={`transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 px-4">
-                ¿Por qué elegir <span className="text-red-500">1minuto</span>?
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 px-4">
+                ¿Por que elegir <span className="text-red-500">1minuto</span>?
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto px-4">
+              <p className="text-center text-gray-400 mb-8 max-w-2xl mx-auto px-4">
+                Resolvemos los problemas reales de agendar turnos
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto px-4">
+                <div className="bg-gray-900/50 rounded-xl p-4 md:p-6 border border-gray-700 hover:border-red-500/50 transition-all duration-300">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-xl flex items-center justify-center mb-3 md:mb-4">
+                    <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Dejas de responder mensajes todo el dia</h3>
+                  <p className="text-gray-400 text-xs md:text-sm">
+                    No mas "¿tenes lugar?", "¿a que hora?", "¿cuanto sale?". Tus clientes ven todo y reservan solos.
+                  </p>
+                </div>
+
+                <div className="bg-gray-900/50 rounded-xl p-4 md:p-6 border border-gray-700 hover:border-red-500/50 transition-all duration-300">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-xl flex items-center justify-center mb-3 md:mb-4">
+                    <Calendar className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Evitas errores en turnos</h3>
+                  <p className="text-gray-400 text-xs md:text-sm">
+                    Nada de confusiones de horarios ni turnos superpuestos. El sistema maneja todo automatico.
+                  </p>
+                </div>
+
                 <div className="bg-gray-900/50 rounded-xl p-4 md:p-6 border border-gray-700 hover:border-red-500/50 transition-all duration-300">
                   <div className="w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-xl flex items-center justify-center mb-3 md:mb-4">
                     <Clock className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Ahorrás tiempo real</h3>
+                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Aumentas la cantidad de reservas</h3>
                   <p className="text-gray-400 text-xs md:text-sm">
-                    No más mensajes de "¿tenés lugar el martes?". Tus clientes ven disponibilidad y eligen solos.
-                  </p>
-                </div>
-
-                <div className="bg-gray-900/50 rounded-xl p-4 md:p-6 border border-gray-700 hover:border-red-500/50 transition-all duration-300">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-xl flex items-center justify-center mb-3 md:mb-4">
-                    <Smartphone className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Funciona 24/7</h3>
-                  <p className="text-gray-400 text-xs md:text-sm">
-                    Incluso cuando dormís, tus clientes pueden sacar turnos. Despertás con la agenda llena.
-                  </p>
-                </div>
-
-                <div className="bg-gray-900/50 rounded-xl p-4 md:p-6 border border-gray-700 hover:border-red-500/50 transition-all duration-300">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-xl flex items-center justify-center mb-3 md:mb-4">
-                    <Moon className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Menos estrés</h3>
-                  <p className="text-gray-400 text-xs md:text-sm">
-                    Se acabó el caos de coordinar horarios. Todo organizado automáticamente.
-                  </p>
-                </div>
-
-                <div className="bg-gray-900/50 rounded-xl p-4 md:p-6 border border-gray-700 hover:border-red-500/50 transition-all duration-300">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-xl flex items-center justify-center mb-3 md:mb-4">
-                    <Settings className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Súper fácil de usar</h3>
-                  <p className="text-gray-400 text-xs md:text-sm">
-                    Lo configurás una vez y se maneja solo. No necesitás ser experto en tecnología.
-                  </p>
-                </div>
-
-                <div className="bg-gray-900/50 rounded-xl p-4 md:p-6 border border-gray-700 hover:border-red-500/50 transition-all duration-300">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-xl flex items-center justify-center mb-3 md:mb-4">
-                    <Users className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Mejor experiencia</h3>
-                  <p className="text-gray-400 text-xs md:text-sm">
-                    Tus clientes aman la comodidad. Pueden elegir horario cuando quieren, sin esperar.
+                    Funciona 24/7. Mientras dormis, tus clientes siguen sacando turnos. Despertas con la agenda llena.
                   </p>
                 </div>
 
@@ -203,10 +282,9 @@ export default function LandingPage() {
                   <div className="w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-xl flex items-center justify-center mb-3 md:mb-4">
                     <Heart className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Tus clientes se autogestionan</h3>
+                  <h3 className="font-semibold text-white mb-2 text-sm md:text-base">Mejor experiencia para tus clientes</h3>
                   <p className="text-gray-400 text-xs md:text-sm">
-                    <strong className="text-red-400">Lo más importante:</strong> Pueden cancelar, reprogramar y
-                    confirmar solos. Vos solo trabajás, no coordinás.
+                    Reservan cuando quieren, sin esperar respuesta. Les encanta la comodidad y vuelven.
                   </p>
                 </div>
               </div>
@@ -214,6 +292,42 @@ export default function LandingPage() {
           </section>
 
           {/* Payment Methods */}
+
+          {/* Use Cases Section */}
+          <section className="py-8 md:py-12">
+            <div
+              className={`transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 px-4">
+                Ideal para <span className="text-red-500">tu negocio</span>
+              </h2>
+              <p className="text-center text-gray-400 mb-8 max-w-2xl mx-auto px-4">
+                Si trabajas con turnos o reservas, 1minuto es para vos
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl mx-auto px-4">
+                <div className="bg-gray-900/50 rounded-xl p-4 border border-gray-700 hover:border-red-500/50 transition-all text-center">
+                  <Scissors className="w-8 h-8 text-red-500 mx-auto mb-2" />
+                  <span className="text-sm text-gray-300">Peluquerias</span>
+                </div>
+                <div className="bg-gray-900/50 rounded-xl p-4 border border-gray-700 hover:border-red-500/50 transition-all text-center">
+                  <Scissors className="w-8 h-8 text-red-500 mx-auto mb-2" />
+                  <span className="text-sm text-gray-300">Barberias</span>
+                </div>
+                <div className="bg-gray-900/50 rounded-xl p-4 border border-gray-700 hover:border-red-500/50 transition-all text-center">
+                  <Sparkles className="w-8 h-8 text-red-500 mx-auto mb-2" />
+                  <span className="text-sm text-gray-300">Esteticas</span>
+                </div>
+                <div className="bg-gray-900/50 rounded-xl p-4 border border-gray-700 hover:border-red-500/50 transition-all text-center">
+                  <Stethoscope className="w-8 h-8 text-red-500 mx-auto mb-2" />
+                  <span className="text-sm text-gray-300">Consultorios</span>
+                </div>
+                <div className="bg-gray-900/50 rounded-xl p-4 border border-gray-700 hover:border-red-500/50 transition-all text-center col-span-2 sm:col-span-1">
+                  <Briefcase className="w-8 h-8 text-red-500 mx-auto mb-2" />
+                  <span className="text-sm text-gray-300">Profesionales</span>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* Pricing */}
           <section className="py-12 md:py-16">
@@ -319,6 +433,45 @@ export default function LandingPage() {
                     <p className="text-gray-400 text-sm">Sin límite de referidos</p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="py-12 md:py-16">
+            <div
+              className={`transition-all duration-1000 delay-850 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 px-4">
+                Preguntas <span className="text-red-500">frecuentes</span>
+              </h2>
+              <p className="text-center text-gray-400 mb-8 max-w-2xl mx-auto px-4">
+                Todo lo que necesitas saber sobre turnos por WhatsApp
+              </p>
+              <div className="max-w-3xl mx-auto px-4 space-y-3">
+                {faqs.map((faq, index) => (
+                  <div 
+                    key={index}
+                    className="bg-gray-900/50 rounded-xl border border-gray-700 overflow-hidden"
+                  >
+                    <button
+                      onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                      className="w-full px-4 md:px-6 py-4 flex items-center justify-between text-left hover:bg-gray-800/50 transition-colors"
+                    >
+                      <span className="font-medium text-white text-sm md:text-base pr-4">{faq.question}</span>
+                      <ChevronDown 
+                        className={`w-5 h-5 text-red-500 flex-shrink-0 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} 
+                      />
+                    </button>
+                    <div 
+                      className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-48' : 'max-h-0'}`}
+                    >
+                      <p className="px-4 md:px-6 pb-4 text-gray-400 text-sm md:text-base">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
