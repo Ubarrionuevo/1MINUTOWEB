@@ -129,6 +129,21 @@
   .container {
     @apply max-w-7xl;
   }
+  
+  /* Hide scrollbar for horizontal scroll sections */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Improve touch interactions */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 /* Custom scrollbar */
@@ -149,8 +164,20 @@
   background: #555;
 }
 
-/* Smooth animations */
-* {
-  transition-property: transform, opacity, background-color, border-color, color, box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize for mobile performance - disable heavy transitions */
+@media (max-width: 640px) {
+  * {
+    transition-duration: 150ms;
+  }
 }

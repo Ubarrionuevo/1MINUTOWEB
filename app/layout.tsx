@@ -1,26 +1,46 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from 'next/font/google'
 import "./globals.css"
 import Script from 'next/script'
 
-
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
-  title: "1minuto",
-  description:
-    "Catálogo Digital con Mercado Pago y Turnero Online Inteligente. Soluciones simples para hacer crecer tu negocio en 1 minuto.",
-  keywords: "catálogo digital, turnero online, mercado pago, whatsapp, productos digitales",
-  authors: [{ name: "1minuto" }],
-  viewport: "width=device-width, initial-scale=1",
+// Next.js 14+ requires viewport to be exported separately
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#000000",
+}
+
+export const metadata: Metadata = {
+  title: "Turnos por WhatsApp | Automatiza tu agenda facil - 1minuto",
+  description:
+    "Automatiza tus turnos y recibilos directo en WhatsApp. Ahorra tiempo y organiza tu agenda sin esfuerzo. Sistema de turnos online simple para negocios.",
+  keywords: "turnos por whatsapp, reservas por whatsapp, sistema de turnos online, agenda automatica, turnero simple, turnos online, reservas online",
+  authors: [{ name: "1minuto" }],
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
-    generator: 'v0.app'
+  openGraph: {
+    title: "Turnos por WhatsApp | Automatiza tu agenda facil - 1minuto",
+    description: "Automatiza tus turnos y recibilos directo en WhatsApp. Ahorra tiempo y organiza tu agenda sin esfuerzo.",
+    type: "website",
+    locale: "es_AR",
+    siteName: "1minuto",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Turnos por WhatsApp | 1minuto",
+    description: "Automatiza tus turnos y recibilos directo en WhatsApp.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  generator: 'v0.app'
 }
 
 export default function RootLayout({
